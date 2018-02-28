@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -55,18 +55,19 @@ module.exports = {
           name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
       },
+      // build之后请将fonts拖入static/css/下,否则字体图标将不显示
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader',
         options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          limit: 80000,
+          name: 'fonts/[name].[hash:7].[ext]'
         }
       },
       {
         test: /\.less$/,
-        loader: 'css-loader!style-loader!less-loader'
-      }
+        loader: 'style-loader!css-loader!less-loader'
+      },
     ]
   }
 }

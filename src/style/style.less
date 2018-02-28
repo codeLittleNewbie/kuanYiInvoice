@@ -1,0 +1,48 @@
+@import "variable.less";
+
+@font-face {
+  font-family: 'pepper';
+  src:
+    url('../assets/fonts/pepper.ttf?be4nuk') format('truetype'),
+    url('../assets/fonts/pepper.woff?be4nuk') format('woff'),
+    url('../assets/fonts/pepper.svg?be4nuk#pepper') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'pepper' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-down:before {
+  content: "\e901";
+  font-size: 18px;
+  margin-left: 5px;
+}
+.icon-start:before {
+  content: "\e900";
+  line-height: 48px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+.icon-mine-about:before {
+  content: "\e904";
+  color: #757575;
+}
+.icon-tabbar-store-selected:before {
+  content: "\e906";
+  color: #fc4a01;
+  font-size: 40px;
+}
