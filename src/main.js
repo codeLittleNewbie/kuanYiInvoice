@@ -22,6 +22,7 @@ import 'font-awesome/css/font-awesome.css'
 // mint-ui按需就不能使用use方式了->tip
 Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
+
 Vue.component(Cell.name, Cell);
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
@@ -58,7 +59,6 @@ Vue.use(functions);
 
 Vue.config.productionTip = false;
 
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -66,4 +66,4 @@ new Vue({
   router,
   template: '<App/>',
   components: { App }
-})
+});

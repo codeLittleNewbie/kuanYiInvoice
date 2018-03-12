@@ -61,7 +61,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           limit: 80000,
-          name: 'fonts/[name].[hash:7].[ext]'
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
       {

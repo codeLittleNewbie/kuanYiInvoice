@@ -1,5 +1,5 @@
 <template>
-  <div class="container" @click="close">
+  <div class="container fon-size_14" @click="close">
     <ky-header fixed class="border-bottom color-default">
       <div slot="right"
            v-if="type == 1"
@@ -40,7 +40,7 @@
         >个人
         </div>
         <div class="flex_1 text-ac home-tab-item"
-             :style="'border: 1px solid ' + theme + ' !important;'"
+             :style="'border: 1px solid ' + theme + ' !important;color:' + theme"
              v-show="active == 'page-one'"
              @click="pageChange(true)">个人
         </div>
@@ -50,7 +50,7 @@
         >企业
         </div>
         <div class="flex_1 text-ac home-tab-item"
-             :style="'border: 1px solid ' + theme + ' !important;'"
+             :style="'border: 1px solid ' + theme + ' !important;color:' + theme"
              v-show="active == 'page-two'"
              @click="pageChange(false)">企业
         </div>
@@ -178,9 +178,7 @@
 
             <div class="flex home-down" @click="downUpChange(true)">
               <div class="width_50 text-ac flex fon-size_14 home-down-title"
-                   :style="'border: 1px solid ' + theme + ';color: ' +
-                   theme"
-              >{{btnMsgOne}}
+                   :style="'border-left: 1px solid ' + theme + ';border-bottom: 1px solid ' + theme + ';border-right: 1px solid '+ theme +';color: ' + theme">{{btnMsgOne}}
                 <div class="flex">
                   <span class="icon-down" :class="{'is-up' : !downUpStatusOne}"></span>
                 </div>
@@ -241,7 +239,7 @@
 
             <div class="flex home-down" @click="downUpChange(false)">
               <div class="width_50 text-ac flex fon-size_14 home-down-title"
-                   :style="'border: 1px solid ' + theme + ';color: ' + theme">{{btnMsgTwo}}
+                   :style="'border-left: 1px solid ' + theme + ';border-bottom: 1px solid ' + theme + ';border-right: 1px solid '+ theme +';color: ' + theme">{{btnMsgTwo}}
                 <div class="flex">
                   <span class="icon-down" :class="{'is-up' : !downUpStatusTwo}"></span>
                 </div>
@@ -317,39 +315,42 @@
       popup-transition="popup-fade" style="z-index: 2004;width: 90%!important;overflow: auto;">
       <div class="padding_20">
         <div class="flex mar-top_1 mar-bottom_3 fon-size_20 fon-bold">确认开票信息</div>
-        <div class="flex" :class="invoiceDetail.title.length > 13 ? 'line_h_20' : 'line_h_40'">
+        <div class="flex" :class="invoiceDetail.title.length > 15 ? 'line_h_20' : 'line_h_40'">
           <div class="flex_1">发票抬头</div>
-          <div class="color-place flex_3 text-ar">{{invoiceDetail.title}}</div>
+          <div class="color-place flex_3 text-ar twoElisp">{{invoiceDetail.title}}</div>
         </div>
-        <div class="flex line_h_40">
+        <div class="flex line_h_40" :class="invoiceDetail.email.length > 15 ? 'line_h_20' : 'line_h_40'">
           <div class="flex_1">邮箱</div>
-          <div class="flex_1 text-ar color-place">{{invoiceDetail.email}}</div>
+          <div class="flex_3 text-ar color-place twoElisp">{{invoiceDetail.email}}</div>
         </div>
+        <div class="flex flex_es line_h_40" :class="invoiceDetail.phone.length > 15 ? 'line_h_20' : 'line_h_40'">
+          <div class="flex_1">手机</div>
+          <div class="flex_3 text-ar color-place twoElisp">{{invoiceDetail.phone}}</div>
+        </div>
+
         <div class="flex flex_es line_h_40">
-          <div class="flex_1">手机号</div>
-          <div class="flex_1 text-ar color-place">{{invoiceDetail.phone}}</div>
+          <div class="flex_1">开户行、账号</div>
+          <div class="flex_2_5 text-ar color-place twoElisp">{{invoiceDetail.account}}</div>
         </div>
+
         <div class="flex flex_es line_h_40" v-show="active == 'page-two'">
-          <div class="flex_1">纳税人识别号</div>
-          <div class="flex_1 text-ar color-place">{{invoiceDetail.number}}</div>
+          <div style="width: 85px;">纳税人识别号</div>
+          <div class="text-ar color-place">{{invoiceDetail.number}}</div>
         </div>
-        <div class="flex flex_es" :class="invoiceDetail.address.length > 13 ? 'line_h_20' : 'line_h_40'">
+        <!--<div class="flex flex_es" :class="invoiceDetail.address.length > 15 ? 'line_h_20' : 'line_h_40'">
           <div class="flex_1 line_h_40">地址</div>
-          <div class="flex_3 text-ar color-place">{{invoiceDetail.address}}</div>
-        </div>
+          <div class="flex_3 text-ar color-place twoElisp">{{invoiceDetail.address}}</div>
+        </div>-->
         <div class="flex flex_es line_h_40">
-          <div class="flex_1">电话</div>
-          <div class="flex_1 text-ar color-place">{{invoiceDetail.tel}}</div>
+          <div class="flex_1">地址、电话</div>
+          <div class="flex_3 text-ar color-place twoElisp">{{invoiceDetail.tel}}</div>
         </div>
-        <div class="flex flex_es line_h_40">
+        <!--<div class="flex flex_es line_h_40" :class="invoiceDetail.bank.length > 15 ? 'line_h_20' : 'line_h_40'">
           <div class="flex_1">开户行</div>
-          <div class="flex_1 text-ar color-place">{{invoiceDetail.bank}}</div>
-        </div>
-        <div class="flex flex_es line_h_40">
-          <div class="flex_1">开户行账号</div>
-          <div class="flex_1 text-ar color-place">{{invoiceDetail.account}}</div>
-        </div>
-        <div class="flex flex_es mar-top_4">
+          <div class="flex_3 text-ar color-place twoElisp">{{invoiceDetail.bank}}</div>
+        </div>-->
+
+        <div class="flex flex_es mar-top_2">
           <mt-button class="flex_1 fon-size_16 color-default" @click="popupVisibleMakeSure = false">返回修改</mt-button>
           <mt-button
             class="flex_1 mar-left_2 color-white fon-size_16"
@@ -512,7 +513,16 @@
         isClickOne: false,
         isClickTwo: false,
 
-        invoiceDetail: {},                // 发票详情
+        invoiceDetail: {
+          title: '',
+          address: '',
+          email: '',
+          phone: '',
+          number: '',
+          tel: '',
+          bank: '',
+          account: '',
+        },                // 发票详情
       }
     },
     methods: {
@@ -616,8 +626,24 @@
         // 个人
         if (this.active == 'page-one') {
 
+          if (!this.invoiceOne.title && this.requireStartOne1.title_list){
+             Toast('抬头不能为空!')
+          }else if (!this.invoiceOne.phone && this.requireStartOne1.phone_require){
+             Toast('手机不能为空!')
+          }else if (!this.invoiceOne.email && this.requireStartOne1.email_require){
+             Toast('邮箱地址不能为空!');
+          }else if (!this.invoiceOne.number && this.requireStartOne1.number_require){
+             Toast('纳税人识别号不能为空!');
+          }else if (!this.invoiceOne.address && this.requireStartOne1.address_require){
+             Toast('电话不能为空!')
+          }else if (!this.invoiceOne.account && this.requireStartOne1.opening_bankl_require){
+             Toast('开户行不能为空!');
+          }else if (!this.invoiceOne.bank && this.requireStartOne1.account_require){
+             Toast('开户行账户不能为空!');
+          }else {
+
           // 验证必填项是否为空
-          if (!this.invoiceOne.title && this.requireStartOne1.title_list
+          /*if (!this.invoiceOne.title && this.requireStartOne1.title_list
             || !this.invoiceOne.phone && this.requireStartOne1.phone_require
             || !this.invoiceOne.email && this.requireStartOne1.email_require
             || !this.invoiceOne.number && this.requireStartOne1.number_require
@@ -626,7 +652,7 @@
             || !this.invoiceOne.account && this.requireStartOne1.opening_bankl_require
             || !this.invoiceOne.bank && this.requireStartOne1.account_require) {
             Toast('必填项不能为空');
-          } else {
+          } else {*/
             if (this.invoiceOne.phone) {
               // 验证手机号是否存在
               if (this.checkPhone(this.invoiceOne.phone)) {
@@ -644,8 +670,24 @@
         // 企业
         else {
 
+          if (!this.invoiceTwo.title && this.tempRequire.title_list){
+            Toast('抬头不能为空!')
+          }else if (!this.invoiceTwo.phone && this.tempRequire.phone_require){
+            Toast('手机不能为空!')
+          }else if (!this.invoiceTwo.email && this.tempRequire.email_require){
+            Toast('邮箱地址不能为空!');
+          }else if (!this.invoiceTwo.number && this.tempRequire.number_require){
+            Toast('纳税人识别号不能为空!');
+          }else if (!this.invoiceTwo.address && this.tempRequire.address_require){
+            Toast('电话不能为空!')
+          }else if (!this.invoiceTwo.account && this.tempRequire.opening_bankl_require){
+            Toast('开户行不能为空!');
+          }else if (!this.invoiceTwo.bank && this.tempRequire.account_require){
+            Toast('开户行账户不能为空!');
+          }else {
+
           // 验证必填项是否为空
-          if (!this.invoiceTwo.title && this.tempRequire.title_list
+          /*if (!this.invoiceTwo.title && this.tempRequire.title_list
             || !this.invoiceTwo.phone && this.tempRequire.phone_require
             || !this.invoiceTwo.email && this.tempRequire.email_require
             || !this.invoiceTwo.address && this.tempRequire.address_require
@@ -653,7 +695,7 @@
             || !this.invoiceTwo.bank && this.tempRequire.opening_bankl_require
             || !this.invoiceTwo.account && this.tempRequire.account_require) {
             Toast('必填项不能为空');
-          } else {
+          } else {*/
 
             if (this.invoiceTwo.phone) {
               if (this.checkPhone(this.invoiceTwo.phone)) {
@@ -685,6 +727,11 @@
         this.popupVisible = true;
       },
       submitApi() {
+        // 报错发票成功信息 || 主题色
+
+        localStorage.setItem('theme',this.theme);
+        localStorage.setItem('titleSrc',this.titleSrc);
+
         var appid = localStorage.getItem('appid');
         var orderNo = localStorage.getItem('orderNo');
         var sign = localStorage.getItem('sign');
@@ -716,6 +763,9 @@
               if (this.type == 2) {
                 MessageBox('提示', '开票成功!');
               } else {
+                var detail = JSON.stringify(res.data);
+                localStorage.setItem('detail',detail);
+
                 this.$router.push({
                   name: 'success',
                   params: {
@@ -753,6 +803,9 @@
               if (this.type == 2) {
                 MessageBox('提示', '开票成功!');
               } else {
+                var detail = JSON.stringify(res.data);
+                localStorage.setItem('detail',detail);
+
                 this.$router.push({
                   name: 'success',
                   params: {
@@ -1010,6 +1063,7 @@
       border: 1px solid gainsboro;
       border-bottom: none;
       .home-tab-item {
+        color: gainsboro;
         margin-left: 3px;
         margin-right: 3px;
         line-height: 38px;
@@ -1023,7 +1077,6 @@
       .home-down {
         line-height: 48px;
         .home-down-title {
-          border-top: none;
           .is-up {
             transform: rotateX(180deg);
           }
@@ -1055,5 +1108,14 @@
 
   .top295 {
     top: 295px !important;
+  }
+
+
+  .twoElisp{
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   }
 </style>
